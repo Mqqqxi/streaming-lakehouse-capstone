@@ -79,7 +79,7 @@ data "aws_iam_policy_document" "redshift_streaming_permissions" {
     ]
     # Acotar a los ARN especificos de lakehouse_db en un entorno real;
     # se deja abierto aca para simplificar la practica de clase.
-    resources = ["*"]
+    resources = [ "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:catalog", "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:database/lakehouse_db", "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:table/lakehouse_db/*", ]
   }
 
   statement {
